@@ -1,0 +1,67 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+tr:nth-child(even) {
+  background-color: #171717;
+}
+thead {
+  background-color: #171717;
+  position: sticky;
+  top: -12px;
+}
+th{
+    font-size: 12px;
+}
+table th,
+table td {
+  padding: 12px;
+  text-align: center;
+  min-width: 100px;
+}
+.red {
+  background-color: #900;
+}
+.left {
+  text-align: left;
+}
+.table-actions {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.info {
+  background-color: gray;
+  padding: 5px;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  font-size: 12px;
+  cursor: pointer;
+}
+.inline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.info-hover {
+  position: absolute;
+  background-color: gray;
+  display: none;
+  width: 220px;
+  text-align: left;
+  padding: 6px 10px;
+  border-radius: 12px;
+  right: -220px !important;
+  top: 0;
+  word-wrap: break-word;
+  font-size: 12px;
+}
+.info:hover ~ .info-hover {
+  display: block;
+}
