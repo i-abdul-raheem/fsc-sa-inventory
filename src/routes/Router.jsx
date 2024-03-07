@@ -1,6 +1,6 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { AuthLayout } from "../layouts";
-import { Inventory, Login } from "../pages";
+import { Customers, Inventory, Login, Vendors } from "../pages";
 import { AuthService } from "../services";
 import { useEffect, useState } from "react";
 
@@ -20,6 +20,8 @@ export const Router = () => {
       <Route path="/" element={privateRoute(AuthLayout)} />
       <Route path="/dashboard" element={privateRoute(AuthLayout)} />
       <Route path="/inventory" element={privateRoute(Inventory)} />
+      <Route path="/vendors" element={privateRoute(Vendors)} />
+      <Route path="/customers" element={privateRoute(Customers)} />
     </Routes>
   );
 };

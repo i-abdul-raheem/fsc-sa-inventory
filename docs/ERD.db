@@ -1,0 +1,100 @@
+Enum order_status {
+  pending
+  received
+}
+
+Table delivery {
+  id int8 [primary key]
+  customer_id int8
+  order_id int8
+}
+
+Table order_items {
+  id int8 [primary key]
+  material_id int8
+  ordered_qty text
+  received_qty text
+}
+
+Table orders {
+  id int8
+  items int8[]
+  status order_status
+  note text [not null]
+  created_by int8
+  created_at timestamp
+}
+
+Table purchases {
+  id int8 [primary key]
+  vendor_id int8
+  order_id int
+}
+
+Table materials{
+  id int8 [primary key]
+  part text
+  unit text
+  description text
+  warn text
+  unit_cost text
+  margin text
+  selling text
+  created_by int8
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table units {
+  id int8 [primary key]
+  title text [unique]
+  created_by int8
+}
+
+Table person {
+  id int8 [primary key]
+  company_name text
+  contact_person text
+  address text
+  phone text
+  email text
+  vat_number text
+}
+
+Table vendors {
+  id int8 [primary key]
+  person_id int8
+  created_by int8
+  created_at timestamp
+}
+
+Table customers {
+  id int8 [primary key]
+  created_by int8
+  person_id int8
+}
+
+Table users {
+  id int8 [primary key]
+  username text [unique, not null]
+  password text [not null]
+  person_id int8
+  created_at timestamp
+}
+
+Ref: units.id - materials.unit
+Ref: users.person_id - person.id
+Ref: orders.created_by - users.id
+Ref: vendors.created_by - users.id
+Ref: vendors.person_id - person.id
+Ref: orders.items < order_items.id
+Ref: delivery.order_id - orders.id
+Ref: purchases.order_id - orders.id
+Ref: customers.created_by - users.id
+Ref: materials.created_by - users.id
+Ref: customers.person_id - person.id
+Ref: purchases.vendor_id - vendors.id
+Ref: delivery.customer_id - customers.id
+Ref: order_items.material_id < materials.id
+
+Ref: "units"."created_by" < "users"."id"

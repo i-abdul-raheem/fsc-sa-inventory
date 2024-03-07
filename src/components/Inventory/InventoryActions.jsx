@@ -28,7 +28,7 @@ export const InventoryActions = ({
   setLoading,
   id,
   showEdit,
-  setShowEdit
+  setShowEdit,
 }) => {
   const { showAdd, setShowAdd } = useInventory();
   const [search, setSearch] = useState("");
@@ -52,68 +52,71 @@ export const InventoryActions = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
   return (
-    <div className="p-3 flex items-center justify-end gap-3">
-      <Input
-        title={"Search Inventory"}
-        type="search"
-        value={search}
-        onChange={(e) => {
-          setSearch(e.target.value);
-        }}
-        placeholder={"Search..."}
-      />
-      <Button
-        onClick={() => {
-          setShowAdd(true);
-        }}
-        className={"py-3"}
-        title={"Add Item"}
-      >
-        <FaPlus />
-      </Button>
-      {showAdd && (
-        <AddInventoryItem
-          setShowAdd={setShowAdd}
-          warn={warn}
-          setWarn={setWarn}
-          part={part}
-          setPart={setPart}
-          qty={qty}
-          setQty={setQty}
-          unit={unit}
-          setUnit={setUnit}
-          selling={selling}
-          margin={margin}
-          setMargin={setMargin}
-          addItem={addItem}
-          description={description}
-          setDescription={setDescription}
-          loading={loading}
+    <div className="flex justify-between items-center">
+      <h2 className="ps-3 font-thin text-2xl uppercase">Inventory</h2>
+      <div className="p-3 flex items-center justify-end gap-3">
+        <Input
+          title={"Search Inventory"}
+          type="search"
+          value={search}
+          onChange={(e) => {
+            setSearch(e.target.value);
+          }}
+          placeholder={"Search..."}
         />
-      )}
-      {showEdit && (
-        <EditInventoryItem
-          setShowAdd={setShowAdd}
-          warn={warn}
-          setWarn={setWarn}
-          part={part}
-          setPart={setPart}
-          qty={qty}
-          setQty={setQty}
-          unit={unit}
-          setUnit={setUnit}
-          selling={selling}
-          margin={margin}
-          setMargin={setMargin}
-          updateItem={updateItem}
-          description={description}
-          setDescription={setDescription}
-          loading={loading}
-          id={id}
-          setShowEdit={setShowEdit}
-          setLoading={setLoading}
-        />
-      )}
+        <Button
+          onClick={() => {
+            setShowAdd(true);
+          }}
+          className={"py-3"}
+          title={"Add Item"}
+        >
+          <FaPlus />
+        </Button>
+        {showAdd && (
+          <AddInventoryItem
+            setShowAdd={setShowAdd}
+            warn={warn}
+            setWarn={setWarn}
+            part={part}
+            setPart={setPart}
+            qty={qty}
+            setQty={setQty}
+            unit={unit}
+            setUnit={setUnit}
+            selling={selling}
+            margin={margin}
+            setMargin={setMargin}
+            addItem={addItem}
+            description={description}
+            setDescription={setDescription}
+            loading={loading}
+          />
+        )}
+        {showEdit && (
+          <EditInventoryItem
+            setShowAdd={setShowAdd}
+            warn={warn}
+            setWarn={setWarn}
+            part={part}
+            setPart={setPart}
+            qty={qty}
+            setQty={setQty}
+            unit={unit}
+            setUnit={setUnit}
+            selling={selling}
+            margin={margin}
+            setMargin={setMargin}
+            updateItem={updateItem}
+            description={description}
+            setDescription={setDescription}
+            loading={loading}
+            id={id}
+            setShowEdit={setShowEdit}
+            setLoading={setLoading}
+          />
+        )}
+      </div>
     </div>
   );
 };

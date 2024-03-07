@@ -1,7 +1,7 @@
 import { Button } from "../Button";
 import { Input } from "../Input";
 
-const Row = ({ className, children }) => (
+export const Row = ({ className, children }) => (
   <div
     className={
       "flex w-full gap-1 items-center justify-center mb-1 " + className

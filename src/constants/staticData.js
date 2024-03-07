@@ -3,9 +3,9 @@ export const staticData = {
     "dashboard",
     "inventory",
     "customers",
-    "stocks",
-    "orders",
+    "vendors",
+    "purchase orders",
     "quotations",
-    "export data"
+    
   ],
 };
